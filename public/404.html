@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <meta http-equiv="refresh" content="0; URL=/vehicles-app/" />
+    <script>
+      // SPA redirect for GitHub Pages
+      (function() {
+        var segment = '/vehicles-app/';
+        var pathname = window.location.pathname;
+        if (!pathname.startsWith(segment)) {
+          var newPath = segment + (pathname.startsWith('/') ? pathname.slice(1) : pathname);
+          window.location.replace(newPath);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <p>Redirecting to /vehicles-app/ ...</p>
+  </body>
+</html>
+
