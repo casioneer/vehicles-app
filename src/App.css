@@ -1,0 +1,323 @@
+/* App Layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  background: #1a1a1a;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.left, .right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.footer {
+  background: #1a1a1a;
+  color: #888;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-top: 1px solid #333;
+}
+
+/* Card Component */
+.card {
+  background: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: white;
+}
+
+/* Form Styles */
+.form h3 {
+  margin: 0 0 1rem 0;
+  color: #fff;
+}
+
+.form .row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.form input {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #333;
+  color: white;
+  font-size: 1rem;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: #646cff;
+}
+
+.form .actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* List Styles */
+.list h3 {
+  margin: 0 0 1rem 0;
+  color: #fff;
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.list-header div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Vehicle Item Styles */
+.vehicle-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  background: #333;
+  border: 1px solid #555;
+}
+
+.vehicle-item .main {
+  flex: 1;
+}
+
+.vehicle-item .main > div {
+  margin-bottom: 0.25rem;
+}
+
+.vehicle-item .actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+
+.vehicle-item .edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vehicle-item .edit-form input {
+  padding: 0.5rem;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #444;
+  color: white;
+}
+
+/* Map Styles */
+.map-card h3 {
+  margin: 0 0 1rem 0;
+  color: #fff;
+}
+
+.map-card .leaflet-container {
+  border-radius: 4px;
+  overflow: hidden;
+  height: 500px !important;
+  width: 100% !important;
+  z-index: 1;
+}
+
+/* Исправление отображения тайлов карты */
+.leaflet-container {
+  height: 500px;
+  width: 100%;
+}
+
+.leaflet-tile {
+  max-width: none !important;
+  max-height: none !important;
+}
+
+/* Убираем конфликты со стилями */
+.leaflet-container img {
+  max-width: none !important;
+  height: auto;
+}
+
+.leaflet-popup-content-wrapper {
+  background: white;
+  color: black;
+}
+
+/* Button Styles */
+button {
+  border-radius: 4px;
+  border: 1px solid #555;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background-color: #555;
+  border-color: #646cff;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Error Styles */
+.error {
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  
+  .header {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .form .row {
+    flex-direction: column;
+  }
+  
+  .list-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .vehicle-item {
+    flex-direction: column;
+  }
+  
+  .vehicle-item .actions {
+    flex-direction: row;
+    min-width: auto;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .app {
+    color: #213547;
+  }
+  
+  .header {
+    background: #f8f9fa;
+    color: #213547;
+    border-bottom-color: #dee2e6;
+  }
+  
+  .footer {
+    background: #f8f9fa;
+    color: #6c757d;
+    border-top-color: #dee2e6;
+  }
+  
+  .card {
+    background: white;
+    border-color: #dee2e6;
+    color: #213547;
+  }
+  
+  .form input {
+    background: white;
+    border-color: #ced4da;
+    color: #213547;
+  }
+  
+  .vehicle-item {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+  }
+  
+  .vehicle-item .edit-form input {
+    background: white;
+    border-color: #ced4da;
+    color: #213547;
+  }
+  
+  button {
+    background-color: #e9ecef;
+    border-color: #ced4da;
+    color: #213547;
+  }
+  
+  button:hover {
+    background-color: #dee2e6;
+  }
+  
+  .error {
+    color: #dc3545;
+    background: rgba(220, 53, 69, 0.1);
+    border-color: rgba(220, 53, 69, 0.3);
+  }
+}
