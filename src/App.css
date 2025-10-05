@@ -187,12 +187,23 @@
 .leaflet-tile {
   max-width: none !important;
   max-height: none !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* Убираем конфликты со стилями */
 .leaflet-container img {
   max-width: none !important;
   height: auto;
+}
+
+/* Reduce antialias seams between tiles on fractional zoom */
+.leaflet-pane,
+.leaflet-map-pane,
+.leaflet-tile-pane {
+  will-change: transform;
 }
 
 .leaflet-popup-content-wrapper {
