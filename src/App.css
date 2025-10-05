@@ -124,6 +124,13 @@
   gap: 1rem;
 }
 
+/* Scrollable list window */
+.list-scroll {
+  max-height: 60vh;
+  overflow: auto;
+  padding-right: 6px; /* spacing for scrollbar */
+}
+
 /* Vehicle Item Styles */
 .vehicle-item {
   display: flex;

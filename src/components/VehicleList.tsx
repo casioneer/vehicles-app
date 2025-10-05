@@ -30,11 +30,13 @@ export default function VehicleList() {
           <button onClick={() => changeSort("")}>Сброс</button>
         </div>
       </div>
-      <ul>
-        {items.map((v: any) => (
-          <VehicleItem key={v.id} v={v} />
-        ))}
-      </ul>
+      <div className="list-scroll">
+        <ul>
+          {items.map((v: any) => (
+            <VehicleItem key={v.id} v={v} />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
