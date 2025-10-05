@@ -47,11 +47,9 @@ export const useVehiclesStore = create<VehiclesState>((set: any, get: any) => ({
     set({ loading: true, error: null });
     try {
       const serverList = await fetchVehicles();
-      // Merge: prefer local modifications if present in LS
-      const ls = readFromLs();
-      const merged = ls && ls.length ? ls : serverList;
-      set({ vehicles: merged, loading: false });
-      saveToLs(merged);
+      // Always prefer server data on load to avoid stale local stub
+      set({ vehicles: serverList, loading: false });
+      saveToLs(serverList);
     } catch (err: any) {
       set({ loading: false, error: err?.message ?? "Failed to load" });
     }
