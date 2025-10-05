@@ -25,21 +25,11 @@ A single-page application to view, create, edit, delete, and sort vehicles fetch
 
 ## Getting Started
 
-### Prerequisites
+### Requirements
 - Node.js 18+
-- npm 9+
 
 ### Install
 ```bash
-# From project root
-npm install
-```
-
-If you see a peer dependency conflict with react-leaflet, ensure React is at 18.x (this project uses 18.3.x). If needed, remove lockfile and node_modules and reinstall:
-```bash
-# PowerShell
-Remove-Item -Recurse -Force node_modules -ErrorAction SilentlyContinue
-Remove-Item package-lock.json -ErrorAction SilentlyContinue
 npm install
 ```
 
@@ -51,8 +41,7 @@ Open the URL printed by Vite.
 
 ## API Client
 - File: `src/api/client.ts`
-- By default, contains a typed stub returning sample data so the app runs even without axios installed.
-- To enable real API calls, replace contents with the axios version included in the file comments and ensure `npm install` completed.
+- Uses axios and points to `https://ofc-test-01.tspb.su`
 
 ```ts
 // axios version (uncomment and use after npm install)
@@ -94,14 +83,7 @@ export { api };
 ```
 
 ## Troubleshooting
-- React/peer deps conflict:
-  - Ensure React 18.x and `react-leaflet@^4`
-  - Reinstall deps as shown above
-- Leaflet tiles appear as squares/rectangles:
-  - Ensure `import 'leaflet/dist/leaflet.css'` in `MapView.tsx`
-  - App CSS sets proper sizes for `.leaflet-container`
-- Module import errors with TypeScript:
-  - `tsconfig.app.json` uses `verbatimModuleSyntax: true`. Imports include explicit extensions like `.tsx`/`.ts`.
+- Leaflet tiles: `import 'leaflet/dist/leaflet.css'` in `MapView.tsx`; размеры заданы в `App.css`.
 
 ## GitHub
 To publish the project:
