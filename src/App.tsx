@@ -20,7 +20,7 @@ export default function App() {
       <header className="header">
         <h1>Vehicles SPA — Тестовое задание</h1>
         <div>
-          <button onClick={() => setShowMap((v) => !v)}>{showMap ? "Hide map" : "Show map"}</button>
+          <button onClick={() => setShowMap((v) => !v)}>{showMap ? "Скрыть карту" : "Показать карту"}</button>
         </div>
       </header>
 

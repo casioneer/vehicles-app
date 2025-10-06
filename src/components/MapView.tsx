@@ -2,11 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { useVehiclesStore } from "../store/vehiclesStore.ts";
 import { useEffect, useRef } from "react";
 import L from "leaflet";
-
-// Импорт CSS для Leaflet
 import "leaflet/dist/leaflet.css";
-
-// Fix default icon (Leaflet + Vite)
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
@@ -22,17 +18,12 @@ export default function MapView() {
   const vehicles = useVehiclesStore((s: any) => s.vehicles);
   const mapRef = useRef<L.Map>(null);
 
-  // default center (Moscow if none)
   const center: [number, number] = [55.753332, 37.621676];
-
   const markers = vehicles.filter((v: any) => v.latitude != null && v.longitude != null);
 
-  // Исправляем размер карты после загрузки
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (mapRef.current) {
-        mapRef.current.invalidateSize();
-      }
+      mapRef.current?.invalidateSize();
     }, 100);
     return () => clearTimeout(timer);
   }, []);
