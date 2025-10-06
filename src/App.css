@@ -43,6 +43,7 @@
   padding: 1rem 2rem;
   text-align: center;
   border-top: 1px solid #333;
+  margin-top: auto; /* stick footer to bottom, remove extra space */
 }
 
 /* Card Component */
@@ -179,14 +180,14 @@
 
 .map-card .leaflet-container {
   border-radius: 4px;
-  overflow: visible; /* allow popups to be visible */
+  overflow: hidden; /* keep map within card window */
   height: 500px !important;
   width: 100% !important;
   z-index: 1;
 }
 
 .map-card {
-  overflow: visible;
+  overflow: hidden; /* prevent map from pushing layout */
 }
 
 /* Исправление отображения тайлов карты */
