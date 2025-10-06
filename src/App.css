@@ -6,13 +6,14 @@
 }
 
 .header {
-  background: #1a1a1a;
-  color: white;
+  background: linear-gradient(90deg, #0d6efd, #0bb6d7);
+  color: #ffffff;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: none;
+  box-shadow: 0 6px 18px rgba(13, 110, 253, 0.25);
 }
 
 .header h1 {
@@ -23,7 +24,7 @@
 .container {
   flex: 1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 2rem;
   padding: 2rem;
   max-width: 1400px;
@@ -47,11 +48,12 @@
 
 /* Card Component */
 .card {
-  background: #2a2a2a;
-  border: 1px solid #444;
-  border-radius: 8px;
-  padding: 1.5rem;
-  color: white;
+  background: #ffffff;
+  border: 1px solid #eef0f3;
+  border-radius: 12px;
+  padding: 1.25rem 1.25rem 1.1rem;
+  color: #213547;
+  box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06);
 }
 
 /* Form Styles */
@@ -76,17 +78,19 @@
 
 .form input {
   margin-top: 0.25rem;
-  padding: 0.5rem;
-  border: 1px solid #555;
-  border-radius: 4px;
-  background: #333;
-  color: white;
-  font-size: 1rem;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #213547;
+  font-size: 0.95rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .form input:focus {
   outline: none;
-  border-color: #646cff;
+  border-color: #84c5ff;
+  box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.15);
 }
 
 .form .actions {
@@ -138,8 +142,9 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-  background: #333;
-  border: 1px solid #555;
+  background: #f9fafb;
+  border: 1px solid #eef0f3;
+  border-radius: 10px;
 }
 
 .vehicle-item .main {
@@ -164,11 +169,11 @@
 }
 
 .vehicle-item .edit-form input {
-  padding: 0.5rem;
-  border: 1px solid #555;
-  border-radius: 4px;
-  background: #444;
-  color: white;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #213547;
 }
 
 /* Map Styles */
@@ -179,10 +184,14 @@
 
 .map-card .leaflet-container {
   border-radius: 4px;
-  overflow: hidden;
+  overflow: visible; /* allow popups to be visible */
   height: 500px !important;
   width: 100% !important;
   z-index: 1;
+}
+
+.map-card {
+  overflow: visible;
 }
 
 /* Исправление отображения тайлов карты */
@@ -206,6 +215,18 @@
   height: auto;
 }
 
+/* Ensure popup text is visible above tiles */
+.leaflet-popup-pane {
+  z-index: 10000 !important;
+}
+.leaflet-popup-content-wrapper {
+  background: #ffffff;
+  color: #000000;
+}
+.leaflet-popup-content {
+  color: #000000;
+}
+
 /* Reduce antialias seams between tiles on fractional zoom */
 .leaflet-pane,
 .leaflet-map-pane,
@@ -220,25 +241,36 @@
 
 /* Button Styles */
 button {
-  border-radius: 4px;
-  border: 1px solid #555;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid #d0d5dd;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   font-family: inherit;
-  background-color: #444;
-  color: white;
+  background: #0d6efd;
+  color: #ffffff;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: box-shadow 0.2s, transform 0.05s, background 0.2s;
 }
 
 button:hover {
-  background-color: #555;
-  border-color: #646cff;
+  background: #0b5ed7;
+  box-shadow: 0 6px 14px rgba(13, 110, 253, 0.25);
 }
 
 button:active {
   transform: translateY(1px);
+}
+
+/* Secondary buttons inside list header */
+.list-header button {
+  background: #ffffff;
+  color: #213547;
+  border: 1px solid #d0d5dd;
+}
+.list-header button:hover {
+  background: #f3f4f6;
+  box-shadow: none;
 }
 
 /* Error Styles */
@@ -289,48 +321,48 @@ button:active {
   }
   
   .header {
-    background: #f8f9fa;
-    color: #213547;
-    border-bottom-color: #dee2e6;
+    background: linear-gradient(90deg, #0d6efd, #0bb6d7);
+    color: #ffffff;
+    border-bottom-color: transparent;
   }
   
   .footer {
-    background: #f8f9fa;
+    background: #ffffff;
     color: #6c757d;
-    border-top-color: #dee2e6;
+    border-top-color: #eef0f3;
   }
   
   .card {
-    background: white;
-    border-color: #dee2e6;
+    background: #ffffff;
+    border-color: #eef0f3;
     color: #213547;
   }
   
   .form input {
     background: white;
-    border-color: #ced4da;
+    border-color: #d0d5dd;
     color: #213547;
   }
   
   .vehicle-item {
-    background: #f8f9fa;
-    border-color: #dee2e6;
+    background: #f9fafb;
+    border-color: #eef0f3;
   }
   
   .vehicle-item .edit-form input {
     background: white;
-    border-color: #ced4da;
+    border-color: #d0d5dd;
     color: #213547;
   }
   
   button {
-    background-color: #e9ecef;
-    border-color: #ced4da;
-    color: #213547;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #ffffff;
   }
   
   button:hover {
-    background-color: #dee2e6;
+    background-color: #0b5ed7;
   }
   
   .error {
