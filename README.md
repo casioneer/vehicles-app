@@ -40,20 +40,7 @@ npm run dev
 Open the URL printed by Vite.
 
 ## API Client
-- File: `src/api/client.ts`
-- Uses axios and points to `https://ofc-test-01.tspb.su`
-
-```ts
-// axios version (uncomment and use after npm install)
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: "https://ofc-test-01.tspb.su",
-  timeout: 10000,
-});
-
-export { api };
-```
+- File: `src/api/client.ts`, axios с baseURL `https://ofc-test-01.tspb.su`
 
 ## State Management
 - File: `src/store/vehiclesStore.ts`
@@ -85,19 +72,7 @@ export { api };
 ## Troubleshooting
 - Leaflet tiles: `import 'leaflet/dist/leaflet.css'` in `MapView.tsx`; размеры заданы в `App.css`.
 
-## GitHub
-To publish the project:
-```bash
-# Initialize repo
-git init
-git add .
-git commit -m "feat: vehicles SPA with CRUD, sorting, map, TS"
-
-# Create a new GitHub repo (replace URL)
-git branch -M main
-git remote add origin https://github.com/<your-username>/vehicles-app.git
-git push -u origin main
-```
+ 
 
 ## License
 MIT
