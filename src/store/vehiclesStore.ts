@@ -47,9 +47,32 @@ export const useVehiclesStore = create<VehiclesState>((set: any, get: any) => ({
     set({ loading: true, error: null });
     try {
       const serverList = await fetchVehicles();
-      // Always prefer server data on load to avoid stale local stub
-      set({ vehicles: serverList, loading: false });
-      saveToLs(serverList);
+      const localList = readFromLs();
+
+      if (!localList || localList.length === 0) {
+        set({ vehicles: serverList, loading: false });
+        saveToLs(serverList);
+        return;
+      }
+
+      // Merge strategy:
+      // - For ids that exist on server and locally: take server item and overlay locally edited fields (name, price)
+      // - Include local-only items (created locally) as is
+      const localById = new Map(localList.map(v => [v.id, v]));
+      const merged = serverList.map(sv => {
+        const lv = localById.get(sv.id);
+        if (!lv) return sv;
+        return { ...sv, name: lv.name, price: lv.price };
+      });
+      // Append local-only items
+      for (const lv of localList) {
+        if (!merged.find(m => m.id === lv.id)) {
+          merged.push(lv);
+        }
+      }
+
+      set({ vehicles: merged, loading: false });
+      saveToLs(merged);
     } catch (err: any) {
       set({ loading: false, error: err?.message ?? "Failed to load" });
     }
