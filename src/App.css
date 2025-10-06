@@ -175,7 +175,7 @@
 /* Map Styles */
 .map-card h3 {
   margin: 0 0 1rem 0;
-  color: #fff;
+  color: #000;
 }
 
 .map-card .leaflet-container {
