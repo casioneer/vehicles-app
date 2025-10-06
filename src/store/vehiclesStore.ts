@@ -86,12 +86,14 @@ export const useVehiclesStore = create<VehiclesState>((set: any, get: any) => ({
     saveToLs(newList);
   },
   updateVehicle: (id: number, patch: Partial<Vehicle>) => {
-    const newList = get().vehicles.map((v: Vehicle) => (v.id === id ? { ...v, ...patch } : v));
+    const current = get().vehicles;
+    const newList = current.map((v: Vehicle) => (v.id === id ? { ...v, ...patch } : v));
     set({ vehicles: newList });
     saveToLs(newList);
   },
   deleteVehicle: (id: number) => {
-    const newList = get().vehicles.filter((v: Vehicle) => v.id !== id);
+    const current = get().vehicles;
+    const newList = current.filter((v: Vehicle) => v.id !== id);
     set({ vehicles: newList });
     saveToLs(newList);
   },

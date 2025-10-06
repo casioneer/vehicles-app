@@ -3,11 +3,9 @@ import { useVehiclesStore } from "../store/vehiclesStore.ts";
 import VehicleItem from "./VehicleItem.tsx";
 
 export default function VehicleList() {
-  const getSorted = useVehiclesStore((s: any) => s.getSorted);
+  const items = useVehiclesStore((s: any) => s.getSorted());
   const setSort = useVehiclesStore((s: any) => s.setSort);
   const [sortKey, setSortKey] = useState<"year" | "price" | "">("");
-
-  const items = getSorted();
 
   const changeSort = (key: "year" | "price" | "") => {
     if (!key) {

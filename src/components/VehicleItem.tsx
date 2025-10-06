@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Vehicle } from "../types.ts";
 import { useVehiclesStore } from "../store/vehiclesStore.ts";
 
@@ -8,6 +8,12 @@ export default function VehicleItem({ v }: { v: Vehicle }) {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState(v.name);
   const [price, setPrice] = useState<number>(v.price);
+
+  // keep form fields in sync when store updates the item
+  useEffect(() => {
+    setName(v.name);
+    setPrice(v.price);
+  }, [v.name, v.price]);
 
   const save = () => {
     updateVehicle(v.id, { name, price });
