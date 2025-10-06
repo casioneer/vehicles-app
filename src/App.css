@@ -215,12 +215,14 @@
 .leaflet-popup-pane {
   z-index: 10000 !important;
 }
-.leaflet-popup-content-wrapper {
-  background: #ffffff;
-  color: #000000;
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #ffffff !important;
+  color: #000000 !important;
 }
-.leaflet-popup-content {
-  color: #000000;
+.leaflet-popup-content,
+.leaflet-container .leaflet-popup-content * {
+  color: #000000 !important;
 }
 
 /* Reduce antialias seams between tiles on fractional zoom */
